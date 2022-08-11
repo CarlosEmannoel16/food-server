@@ -5,7 +5,7 @@ const dataSource = new DataSource({
     host: "localhost",
     port: 5432,
     username: "postgres",
-    password: "1190",
+    password: "123456",
     database: "postgres",
     entities: ["./src/database/entityes/*.{ts, js}"]
 })
