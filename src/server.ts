@@ -1,9 +1,13 @@
 import "reflect-metadata";
 import express from "express";
 import database from "./database/dataSource";
+import routers from "./router";
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+
+app.use(routers);
 
 database
   .initialize()

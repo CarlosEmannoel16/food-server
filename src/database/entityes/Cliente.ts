@@ -5,7 +5,7 @@ import {v4 as uuid} from 'uuid'
 @Entity()
 export default class Cliente {
     @PrimaryColumn()
-    id!: string
+    id?: string
 
     @Column()
     name!: string
@@ -17,11 +17,14 @@ export default class Cliente {
     email!: string
 
     @Column()
+    nascimento!: string
+
+    @Column()
     telefone!: string
 
-    @OneToMany(()=> Endereco, (endereco) => endereco.idEndereco)
-    @JoinColumn()
-    endereco?: Endereco
+    // @OneToMany(()=> Endereco, (endereco) => endereco.idEndereco)
+    // @JoinColumn()
+    // endereco?: Endereco
 
     constructor(){
         
