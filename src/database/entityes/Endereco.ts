@@ -18,9 +18,9 @@ export default class Endereco{
     cidade!: string
 
 
-    // @ManyToOne(()=> Cliente, (cliente) => cliente.id)
-    // @JoinColumn()
-    // cliente?: Cliente
+     @ManyToOne(()=> Cliente, (cliente) => cliente.id)
+     @JoinColumn()
+     cliente?: Cliente
 
 
     constructor(){

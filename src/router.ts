@@ -6,12 +6,13 @@ const router = express.Router();
 router.use(express.json())
 
 //CLIENTE
-router.get("/cliente",  controllers.ClienteController.listar)
+router.get("/cliente", controllers.ClienteController.listar)
 router.post("/cliente/create", controllers.ClienteController.criar)
 router.put("/cliente", controllers.ClienteController.atualizar)
 
 //AUTENTICAÇÃO
-router.get("/auth", controllers.AuthController.loginController)
+router.post("/login", controllers.AuthController.loginController)
+//router.get("/auth", controllers.AuthController.loginController)
 
 //PRATOS
 

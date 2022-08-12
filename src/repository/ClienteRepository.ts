@@ -24,13 +24,21 @@ class ClienteRepository {
     }
 
     async pegarPeloId(){
-
+        
     }
-
 
     async editar(){
 
     }
+
+    async pegarPeloEmail(email:string){
+       return await this.getRepository.findOne({
+            where:{
+                email
+            }
+        })
+    }
+
 }
 
 export default new ClienteRepository()

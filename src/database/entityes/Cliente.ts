@@ -22,9 +22,12 @@ export default class Cliente {
     @Column()
     telefone!: string
 
-    // @OneToMany(()=> Endereco, (endereco) => endereco.idEndereco)
-    // @JoinColumn()
-    // endereco?: Endereco
+    @Column()
+    senha!: string
+
+     @OneToMany(()=> Endereco, (endereco) => endereco.idEndereco)
+     @JoinColumn()
+     endereco?: Endereco
 
     constructor(){
         
