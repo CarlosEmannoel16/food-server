@@ -2,8 +2,8 @@ import ClienteController from "./ClienteControlle"
 import AuthController from "./AuthController"
 
 const controllers = {
-    clienteController:  ClienteController,
-    authController: AuthController
+    ClienteController,
+    AuthController
 }
 
 export default controllers
