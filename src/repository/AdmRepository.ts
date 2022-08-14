@@ -12,8 +12,8 @@ class AdmRepository {
     }
     async adicionarAdm(id: string) {
 
-        const result = this.getRepository.create({ idUsuario: id })
-        return this.getRepository.save(result)
+        const result = this.getRepository.create({clienteId: id})
+        return await this.getRepository.save(result)
 
     }
 }

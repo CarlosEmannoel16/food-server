@@ -20,7 +20,7 @@ router.get("/prato/criar", controllers.PratoController.criar)
 
 //ADM
 
-router.post("/adm/criar", )
+router.post("/adm/criar",  controllers.AdmController.criar)
 
 
 

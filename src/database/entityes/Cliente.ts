@@ -30,9 +30,8 @@ export default class Cliente {
     @JoinColumn()
     endereco?: Endereco
 
-    @OneToOne(() => Adm)
-    @JoinColumn()
-    idAdm?: Adm
+    @OneToOne(() => Adm, (adm)=> adm.cliente)
+    adm?: Adm
 
     constructor() {
         if (!this.id) {
