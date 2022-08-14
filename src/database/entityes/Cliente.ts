@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from 'typeorm'
 import Endereco from './Endereco'
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid'
+import Adm from './Adm'
 
 @Entity()
 export default class Cliente {
@@ -25,13 +26,16 @@ export default class Cliente {
     @Column()
     senha!: string
 
-     @OneToMany(()=> Endereco, (endereco) => endereco.idEndereco)
-     @JoinColumn()
-     endereco?: Endereco
+    @OneToMany(() => Endereco, (endereco) => endereco.idEndereco)
+    @JoinColumn()
+    endereco?: Endereco
 
-    constructor(){
-        
-        if(!this.id){
+    @OneToOne(() => Adm)
+    @JoinColumn()
+    idAdm?: Adm
+
+    constructor() {
+        if (!this.id) {
             this.id = uuid()
         }
     }

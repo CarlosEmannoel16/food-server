@@ -1,4 +1,4 @@
-import {Repository } from "typeorm";
+import { Repository } from "typeorm";
 import dataSource from "../database/dataSource";
 import Cliente from "../database/entityes/Cliente";
 
@@ -7,7 +7,7 @@ class ClienteRepository {
 
     private readonly getRepository: Repository<Cliente>
 
-    constructor(){
+    constructor() {
         this.getRepository = dataSource.getRepository(Cliente)
     }
 
@@ -23,20 +23,18 @@ class ClienteRepository {
         return cliente;
     }
 
-    async pegarPeloId(){
-        
+    async pegarAdm(id: string) {
+        const result = await this.getRepository.createQueryBuilder().innerJoin("cliente.id", "isAdm").where("cliente.id = :id", { id })
+        return result
     }
-
-    async editar(){
-
-    }
-
-    async pegarPeloEmail(email:string){
-       return await this.getRepository.findOne({
-            where:{
+    async pegarPeloEmail(email: string) {
+        const cliente = await this.getRepository.findOne({
+            where: {
                 email
             }
         })
+
+        return cliente
     }
 
 }

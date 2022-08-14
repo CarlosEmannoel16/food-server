@@ -1,5 +1,4 @@
-interface iLogin{
+export interface iLogin{
     email: string
     senha: string
-    token: string
 }

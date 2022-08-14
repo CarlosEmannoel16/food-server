@@ -4,14 +4,11 @@ import ClienteService from "../service/Cliente/ClienteService";
 
 
 class ClienteController {
-
-
     async listar(req: Request, res: Response) {
         res.send("Tudo certo!")
     }
 
     async criar(req: Request, res: Response) {
-
         try {
             const result =  await ClienteService.criarCliente(req.body)
             res.json(result)
