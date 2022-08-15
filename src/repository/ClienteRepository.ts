@@ -23,10 +23,7 @@ class ClienteRepository {
         return cliente;
     }
 
-    async pegarAdm(id: string) {
-        const result = await this.getRepository.createQueryBuilder().innerJoin("cliente.id", "isAdm").where("cliente.id = :id", { id })
-        return result
-    }
+
     async pegarPeloEmail(email: string) {
         const cliente = await this.getRepository.findOne({
             where: {

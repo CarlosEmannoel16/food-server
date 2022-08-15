@@ -8,9 +8,6 @@ export default class Adm{
     @PrimaryColumn()
     idAdm?: string
 
-    @Column()
-    clienteId?: string
-
     @OneToOne(() => Cliente, (cliente)=> cliente.adm)
     @JoinColumn()
     cliente?: Cliente

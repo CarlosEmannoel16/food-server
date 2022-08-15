@@ -1,4 +1,4 @@
-import ClienteRepository from "../../repository/ClienteRepository"
+import AdmRepository from "../../repository/AdmRepository"
 import PratoRepository from "../../repository/PratoRepository"
 
 
@@ -6,16 +6,14 @@ import PratoRepository from "../../repository/PratoRepository"
 class PratoService {
 
     async criarPrato(id: string) {
-    const isAdm = await this.verificarSeEAdm(id)
-
-
-
+        const isAdm = await this.verificarSeEAdm(id)
 
     }
 
     async verificarSeEAdm(id: string) {
-        const isAdm = await  ClienteRepository.pegarAdm(id)
-        console.log(isAdm)
+        const isAdm = await AdmRepository.pegarAdm(id)
+        return isAdm ? isAdm : false
+        
     }
 
 }
