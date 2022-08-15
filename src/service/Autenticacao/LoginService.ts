@@ -1,10 +1,10 @@
 import ClienteRepository from "../../repository/ClienteRepository";
 import bcrypt from "bcrypt"
 import { criarTokenJWT } from "../utils/CriarTokenJWT";
-import { iLogin } from "../../repository/Interfaces";
+import { ILogin } from "../../repository/Interfaces";
 
 class LoginService {
-    async verificarLogin(data: iLogin) {
+    async verificarLogin(data: ILogin) {
 
         try {
             const cliente = await ClienteRepository.pegarPeloEmail(data.email)

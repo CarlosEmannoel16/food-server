@@ -9,6 +9,7 @@ class PratoRepository {
     constructor() {
         this.getRepository = dataSource.getRepository(Prato)
     }
+
     async listar() {
         return await this.getRepository.find()
     }
@@ -19,7 +20,7 @@ class PratoRepository {
 
     async criarPrato(data: Prato) {
         const result = this.getRepository.create(data);
-        return this.getRepository.save(result)
+        return await this.getRepository.save(result)
     }
 }
 

@@ -3,13 +3,14 @@ import PratoService from "../service/Prato/PratoService"
 
 class PratoController {
     async listar(req: Request, res: Response) {
-
+        const result = await PratoService.listar()
+        res.json(result)
     }
 
     async criar(req: Request, res: Response) {
-        const adm = await PratoService.verificarSeEAdm(req.body.id);
-        console.log(adm)
-        if (adm) return res.json({ message: "ok" })
+
+        const adm = await PratoService.criarPrato(req.body)
+        return res.json(adm)
     }
 }
 

@@ -3,19 +3,19 @@ import {v4 as uuid} from 'uuid'
 @Entity()
 export default class Prato{
     @PrimaryColumn()
-    idPrato!: string
+    idPrato?: string
 
     @Column()
     nome!: string
 
     @Column()
-    url_foto!: string
+    url_foto?: string
 
     @Column()
     valor!: number
 
     @Column()
-    descricao!: string
+    descricao?: string
 
     constructor(){
         if(!this.idPrato) this.idPrato = uuid()

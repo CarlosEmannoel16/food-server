@@ -6,14 +6,18 @@ import{v4 as uuid} from "uuid"
 @Entity()
 export default class Adm{
     @PrimaryColumn()
-    idAdm?: string
+    id!: string
+
+    @Column()
+    idCliente!: string
 
     @OneToOne(() => Cliente, (cliente)=> cliente.adm)
-    @JoinColumn()
+    @JoinColumn({name: "idCliente"})
     cliente?: Cliente
 
+
     constructor(){
-        if(!this.idAdm) this.idAdm = uuid()
+        if(!this.id) this.id = uuid()
     } 
 
 }     

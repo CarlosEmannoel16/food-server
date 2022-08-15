@@ -17,6 +17,7 @@ router.post("/login", controllers.AuthController.loginController)
 //PRATOS
 
 router.post("/prato/criar", controllers.PratoController.criar)
+router.get("/prato/listar", controllers.PratoController.listar)
 
 //ADM
 router.post("/adm/criar",  controllers.AdmController.criar)

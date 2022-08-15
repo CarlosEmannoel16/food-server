@@ -6,9 +6,9 @@ import Adm from './Adm'
 @Entity()
 export default class Cliente {
     @PrimaryColumn()
-    id?: string
+    id!: string
 
-    @Column()
+    @Column() 
     name!: string
 
     @Column()
