@@ -18,7 +18,7 @@ class PratoRepository {
         return await this.getRepository.findOne({ where: { idPrato: id } })
     }
 
-    async criarPrato(data: Prato) {
+    async criarOuAtualizarPrato(data: Prato) {
         const result = this.getRepository.create(data);
         return await this.getRepository.save(result)
     }

@@ -8,9 +8,10 @@ import PratoRepository from "../../repository/PratoRepository"
 
 class PratoService {
 
-    async criarPrato(data: IPrato) {
+    async criarOuAtualizarPrato(data: IPrato) {
         const isAdm = await this.verificarSeEAdm(data.idCliente)
         const prato: Prato = {
+            idPrato: data.idPrato,
             nome: data.nome,
             valor: data.valor,
             descricao: data.descricao,
@@ -18,7 +19,7 @@ class PratoService {
         }
 
         if (isAdm) {
-           return await PratoRepository.criarPrato(prato)
+           return await PratoRepository.criarOuAtualizarPrato(prato)
         }
 
         return {message: "false"}

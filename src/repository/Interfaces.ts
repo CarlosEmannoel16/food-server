@@ -5,6 +5,7 @@ export interface ILogin{
 
 
 export interface IPrato{
+    idPrato?: string
     nome: string,
     url_foto?: string
     descricao?: string
