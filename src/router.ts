@@ -1,6 +1,6 @@
 import express from "express";
 import controllers from "./controllers";
-import { JwtMeddleware } from "./middlewares/JwtMiddleware";
+import { JwtMiddleware } from "./middlewares/JwtMiddleware";
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.use(express.json())
 
 //CLIENTE
 router.post("/cliente/create", controllers.ClienteController.criar)
-router.put("/cliente", JwtMeddleware, controllers.ClienteController.atualizar)
+router.put("/cliente", JwtMiddleware, controllers.ClienteController.atualizar)
 
 //AUTENTICAÇÃO
 router.post("/login", controllers.AuthController.loginController)
@@ -16,12 +16,12 @@ router.post("/login", controllers.AuthController.loginController)
 
 
 //PRATOS
-router.post("/prato/criar", JwtMeddleware, controllers.PratoController.criar)
+router.post("/prato/criar", JwtMiddleware, controllers.PratoController.criar)
 router.get("/prato/listar", controllers.PratoController.listar)
-router.put("/prato", JwtMeddleware, controllers.PratoController.atualizar)
+router.put("/prato", JwtMiddleware, controllers.PratoController.atualizar)
 
 //ADM
-router.post("/adm/criar", JwtMeddleware, controllers.AdmController.criar)
+router.post("/adm/criar", JwtMiddleware, controllers.AdmController.criar)
 
 
 

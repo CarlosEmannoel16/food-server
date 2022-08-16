@@ -7,7 +7,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 
-export const JwtMeddleware = (req: Request, res: Response, next: NextFunction) => {
+export const JwtMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
     console.log(req.headers)
 

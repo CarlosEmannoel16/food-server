@@ -15,9 +15,9 @@ class PratoService {
             url_foto: data.url_foto
         }
         if (isAdm) {
-           return await PratoRepository.criarOuAtualizarPrato(prato)
+            return await PratoRepository.criarOuAtualizarPrato(prato)
         }
-        return {message: "Não Autorizado"}
+        return { message: "Não Autorizado" }
     }
 
     async verificarSeEAdm(id: string) {
@@ -28,8 +28,22 @@ class PratoService {
         return false
     }
 
-    async listar(){
+    async listar() {
         return await PratoRepository.listar()
+    }
+
+    async deletar(id: string) {
+        const deletado = await PratoRepository.deletar(id)
+        const isadm = id && await this.verificarSeEAdm(id)
+
+        if (isadm) {
+            if (deletado) return { message: "Produto deletado" }
+        } else {
+            return { message: "Não Autorizado" }
+        }
+
+
+
     }
 }
 
