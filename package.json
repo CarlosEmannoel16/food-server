@@ -7,7 +7,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev ./src/server.ts",
-    "build": "yarn tsc"
+    "build": "yarn tsc",
+    "start": "npx tsc && node ./build/server.js"
+  },
+  "engines": {
+      "node": "12.22.12",
+      "yarn": "1.22.19"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
