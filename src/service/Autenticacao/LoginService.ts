@@ -18,10 +18,10 @@ class LoginService {
                 if (isLogin && isemail) {
                     const token = criarTokenJWT(cliente.id as string)
                     const isAdm = await AdmRepository.pegarAdm(cliente.id)
-                    if (isAdm) {
-                        return { autorizacao: true, adm: true, token }
+                    if (isAdm.length > 0) {
+                        return { autorizacao: true, role: "adm", token }
                     }
-                    return { autorizacao: true, token }
+                    return { autorizacao: true, role: "cliente", token }
                 } else {
                     return { autorizacao: false, message: "E-mail ou senha inválidos" }
                 }
