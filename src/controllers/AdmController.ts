@@ -5,8 +5,12 @@ class AdmController {
 
     async criar(req: Request, res: Response) {
         if (req.body.id) {
-           const adm =  await AdmService.criar(req.body.id)
-           if(adm) res.json({message: "ok"})
+            try {
+                const result = await AdmService.criar(req.body.id)
+                res.json(result)
+            } catch (error) {
+                res.json(error)
+            }
         }
     }
 }

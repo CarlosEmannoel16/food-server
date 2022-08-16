@@ -15,7 +15,6 @@ export default class Adm{
     @JoinColumn({name: "idCliente"})
     cliente?: Cliente
 
-
     constructor(){
         if(!this.id) this.id = uuid()
     } 

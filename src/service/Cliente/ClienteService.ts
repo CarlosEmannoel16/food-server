@@ -7,8 +7,15 @@ import { criarTokenJWT } from "../utils/CriarTokenJWT";
 class ClienteService {
 
     async criarOuAtualizarCliente(data: Cliente) {
+
         const salt = 10  /// VAI PARA O ENV
         let senha = data.senha
+        const existeEmail = await ClienteRepository.pegarPeloEmail(data.email)
+        const existeCpf = await ClienteRepository.pegarPeloCpf(data.cpf)
+
+        if (existeEmail) return { message: "E-mail já cadastrado" }
+        if (existeCpf) return { message: "Cpf Já Cadastrado" }
+
         senha = await bcrypt.hash(senha, bcrypt.genSaltSync(salt))
         data = { ...data, senha }
         const cliente = await ClienteRepository.criar(data)
@@ -16,7 +23,7 @@ class ClienteService {
         if (!cliente) {
             return { messsage: "ops" }
         } else {
-           const token = criarTokenJWT(data.id as string)
+            const token = criarTokenJWT(data.id as string)
             return { cliente, token }
         }
     }

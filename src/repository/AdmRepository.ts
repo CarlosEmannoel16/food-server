@@ -29,7 +29,6 @@ class AdmRepository {
                 where: { idCliente: id }
             })
         return result
-
     }
 }
 

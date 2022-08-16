@@ -2,7 +2,12 @@ import AdmRepository from "../../repository/AdmRepository";
 
 class AdmService {
     async criar(id: string) {
-        return await AdmRepository.adicionarAdm(id)
+        const isAdm = await AdmRepository.pegarAdm(id)
+        if (isAdm.length > 0) {
+            return await AdmRepository.adicionarAdm(id)
+        }else{
+           return {message: "Não autroizado"}
+        }
     }
 }
 

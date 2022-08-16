@@ -4,12 +4,9 @@ import AdmRepository from "../../repository/AdmRepository"
 import { IPrato } from "../../repository/Interfaces"
 import PratoRepository from "../../repository/PratoRepository"
 
-
-
 class PratoService {
-
     async criarOuAtualizarPrato(data: IPrato) {
-        const isAdm = await this.verificarSeEAdm(data.idCliente)
+        const isAdm = data.idCliente && await this.verificarSeEAdm(data.idCliente)
         const prato: Prato = {
             idPrato: data.idPrato,
             nome: data.nome,
@@ -17,13 +14,10 @@ class PratoService {
             descricao: data.descricao,
             url_foto: data.url_foto
         }
-
         if (isAdm) {
            return await PratoRepository.criarOuAtualizarPrato(prato)
         }
-
-        return {message: "false"}
-
+        return {message: "Não Autorizado"}
     }
 
     async verificarSeEAdm(id: string) {
@@ -37,7 +31,6 @@ class PratoService {
     async listar(){
         return await PratoRepository.listar()
     }
-
 }
 
 export default new PratoService()

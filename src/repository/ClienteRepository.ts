@@ -30,7 +30,15 @@ class ClienteRepository {
                 email
             }
         })
+        return cliente
+    }
 
+    async pegarPeloCpf(cpf: string) {
+        const cliente = await this.getRepository.findOne({
+            where: {
+                cpf
+            }
+        })
         return cliente
     }
 

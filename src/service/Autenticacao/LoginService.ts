@@ -2,6 +2,7 @@ import ClienteRepository from "../../repository/ClienteRepository";
 import bcrypt from "bcrypt"
 import { criarTokenJWT } from "../utils/CriarTokenJWT";
 import { ILogin } from "../../repository/Interfaces";
+import AdmRepository from "../../repository/AdmRepository";
 
 class LoginService {
     async verificarLogin(data: ILogin) {
@@ -16,9 +17,13 @@ class LoginService {
                 const isemail = cliente.email === data.email
                 if (isLogin && isemail) {
                     const token = criarTokenJWT(cliente.id as string)
+                    const isAdm = await AdmRepository.pegarAdm(cliente.id)
+                    if (isAdm) {
+                        return { autorizacao: true, adm: true, token }
+                    }
                     return { autorizacao: true, token }
                 } else {
-                    return { autorizacao: false, message: "E-mail ou senha inválidos"}
+                    return { autorizacao: false, message: "E-mail ou senha inválidos" }
                 }
             }
         } catch (error) {
