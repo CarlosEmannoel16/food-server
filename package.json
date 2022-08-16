@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "ts-node-dev ./src/server.ts",
     "build": "yarn tsc",
-    "start": "npx tsc && node ./build/server.js"
+    "start": "yarn tsc && node ./build/server.js"
   },
   "engines": {
       "node": "12.22.12",
