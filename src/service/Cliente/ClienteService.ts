@@ -36,6 +36,7 @@ class ClienteService {
 
         if (cliente) {
             const cliente = await ClienteRepository.criar(data)
+            return cliente
         } else {
             return { message: "Cliente não encontrado" }
         }
