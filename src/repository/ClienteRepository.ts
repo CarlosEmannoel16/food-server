@@ -42,6 +42,13 @@ class ClienteRepository {
         return cliente
     }
 
+    async pegarPeloId(id: string) {
+
+        const cliente = await this.getRepository.findOne({ where: { id } })
+        return cliente
+
+    }
+
 }
 
 export default new ClienteRepository()

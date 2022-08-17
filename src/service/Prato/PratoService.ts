@@ -5,15 +5,33 @@ import { IPrato } from "../../repository/Interfaces"
 import PratoRepository from "../../repository/PratoRepository"
 
 class PratoService {
-    async criarOuAtualizarPrato(data: IPrato) {
+    async criarPrato(data: IPrato) {
         const isAdm = data.idCliente && await this.verificarSeEAdm(data.idCliente)
+
         const prato: Prato = {
-            idPrato: data.idPrato,
             nome: data.nome,
             valor: data.valor,
-            descricao: data.descricao,
-            url_foto: data.url_foto
+            descricao: data.descricao || "",
+            url_foto: data.url_foto || ""
         }
+
+        if (isAdm) {
+            return await PratoRepository.criarOuAtualizarPrato(prato)
+        }
+        return { message: "Não Autorizado" }
+    }
+
+    async atualizarPrato(id: string, data: IPrato) {
+        const isAdm = data.idCliente && await this.verificarSeEAdm(data.idCliente)
+
+        const prato: Prato = {
+            idPrato: id,
+            nome: data.nome,
+            valor: data.valor,
+            descricao: data.descricao || "",
+            url_foto: data.url_foto || ""
+        }
+
         if (isAdm) {
             return await PratoRepository.criarOuAtualizarPrato(prato)
         }

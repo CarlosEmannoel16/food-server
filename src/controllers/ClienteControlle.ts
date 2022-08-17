@@ -4,19 +4,20 @@ import ClienteService from "../service/Cliente/ClienteService";
 
 
 class ClienteController {
-  
+
     async criar(req: Request, res: Response) {
+
         try {
-            const result =  await ClienteService.criarOuAtualizarCliente(req.body)
+            const result = await ClienteService.criarCliente(req.body)
             res.json(result)
         } catch (error) {
             console.log(error)
         }
     }
 
-    async atualizar(req: Request, res: Response){ 
+    async atualizar(req: Request, res: Response) {
         try {
-            const result =  await ClienteService.criarOuAtualizarCliente(req.body)
+            const result = await ClienteService.atualizarCliente(req.params.id, req.body)
             res.json(result)
         } catch (error) {
             console.log(error)

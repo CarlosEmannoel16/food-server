@@ -6,7 +6,7 @@ import { criarTokenJWT } from "../utils/CriarTokenJWT";
 
 class ClienteService {
 
-    async criarOuAtualizarCliente(data: Cliente) {
+    async criarCliente(data: Cliente) {
 
         const salt = 10  /// VAI PARA O ENV
         let senha = data.senha
@@ -26,6 +26,20 @@ class ClienteService {
             const token = criarTokenJWT(data.id as string)
             return { cliente, token }
         }
+    }
+
+    async atualizarCliente(id: string, data: Cliente) {
+
+        const cliente = await ClienteRepository.pegarPeloId(id)
+
+        data = {...data, id}
+
+        if (cliente) {
+            const cliente = await ClienteRepository.criar(data)
+        } else {
+            return { message: "Cliente não encontrado" }
+        }
+
     }
 }
 
