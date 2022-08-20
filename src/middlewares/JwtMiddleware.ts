@@ -14,10 +14,10 @@ export const JwtMiddleware = (req: Request, res: Response, next: NextFunction) =
     const authHeader = req.headers.authorization as string
     const token = authHeader && authHeader.split(' ')[1]
 
-    if (!authHeader || !token || authHeader.split(' ')[0] !== "Bearer") return res.status(401).json({ message: "Não Autorizado" })
+    if (!authHeader || !token || authHeader.split(' ')[0] !== "Bearer") return res.status(401).json({ message: "Token Inválido!" })
 
     jwt.verify(token, process.env.SECRET_KEY as string, (err, user) => {
-        if (err) return res.status(403).json({ message: "Não Autorizado" })
+        if (err) return res.status(403).json({ message: "Não Autorizado 2" })
         if (user) next()
     })
 

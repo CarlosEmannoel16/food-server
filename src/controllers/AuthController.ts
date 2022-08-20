@@ -10,12 +10,14 @@ class AuthController {
         const resultado = await LoginService.verificarLogin({ email, senha } as ILogin)
         if (resultado) {
             if (resultado.autorizacao === true) {
-                res.status(200).json(resultado)
+             return res.status(200).json(resultado)
             }
 
             if (resultado.autorizacao === false) {
-                res.status(401).json(resultado)
+             return res.status(401).json(resultado)
             }
+        } else {
+         return res.status(500)
         }
 
     }

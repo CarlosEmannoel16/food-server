@@ -14,8 +14,6 @@ export default class Prato{
     @Column()
     valor!: number
 
-    @Column()
-    descricao?: string
 
     constructor(){
         if(!this.idPrato) this.idPrato = uuid()

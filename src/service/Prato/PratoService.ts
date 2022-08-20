@@ -7,6 +7,7 @@ import PratoRepository from "../../repository/PratoRepository"
 class PratoService {
     async criarPrato(data: IPrato) {
         const isAdm = data.idCliente && await this.verificarSeEAdm(data.idCliente)
+        console.log("datadatdatdatdat",isAdm)
 
         const prato: Prato = {
             nome: data.nome,
@@ -18,7 +19,7 @@ class PratoService {
         if (isAdm) {
             return await PratoRepository.criarOuAtualizarPrato(prato)
         }
-        return { message: "Não Autorizado" }
+        return { message: "Não Autorizado 3" }
     }
 
     async atualizarPrato(id: string, data: IPrato) {
@@ -35,11 +36,12 @@ class PratoService {
         if (isAdm) {
             return await PratoRepository.criarOuAtualizarPrato(prato)
         }
-        return { message: "Não Autorizado" }
+        return { message: "Não Autorizado adm" }
     }
 
     async verificarSeEAdm(id: string) {
         const isAdm = await AdmRepository.pegarAdm(id)
+        console.log("isAdm",isAdm)
         if (isAdm.length > 0) {
             return isAdm
         }
@@ -57,7 +59,7 @@ class PratoService {
         if (isadm) {
             if (deletado) return { message: "Produto deletado" }
         } else {
-            return { message: "Não Autorizado" }
+            return { message: "Não Autorizado 5" }
         }
 
 

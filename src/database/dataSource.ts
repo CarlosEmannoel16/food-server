@@ -12,7 +12,7 @@ const dataSource = new DataSource({
     host: "localhost",
     port: 5432,
     username: "postgres",
-    password: "surane2210",
+    password: "1234",
     database: "postgres",
     entities: [Cliente, Prato, Endereco, Adm]
 })

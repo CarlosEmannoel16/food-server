@@ -20,6 +20,7 @@ class AdmRepository {
     }
 
     async pegarAdm(id: string) {
+        console.log("id",id)
         // const result = await this.getRepository.find({where: {idCliente: id}})
         const result = await this.getRepository.find(
             {

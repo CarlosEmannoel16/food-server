@@ -19,6 +19,7 @@ class PratoRepository {
     }
 
     async criarOuAtualizarPrato(data: Prato) {
+        console.log("data",data)
         const result = this.getRepository.create(data);
         return await this.getRepository.save(result)
     }
