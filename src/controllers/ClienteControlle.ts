@@ -1,17 +1,21 @@
 import { Request, Response } from "express";
 import ClienteService from "../service/Cliente/ClienteService";
+import EnderecoService from "../service/Endereco/EnderecoService";
 
 
 
 class ClienteController {
 
     async criar(req: Request, res: Response) {
-
         try {
             const result = await ClienteService.criarCliente(req.body)
+            if (req.body.endereco && result.cliente!) {
+                const data = {...req.body.endereco, idCliente: result.cliente.id}
+                await EnderecoService.criarEndereco(data)
+            }
             res.json(result)
         } catch (error) {
-            console.log(error)
+            res.status(500).json(error)
         }
     }
 

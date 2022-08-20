@@ -27,7 +27,7 @@ class LoginService {
                 }
             }
         } catch (error) {
-            console.log(error)
+            return { autorizacao: false,  message: "Erro de Servidor" }
         }
 
     }

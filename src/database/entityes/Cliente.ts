@@ -27,7 +27,6 @@ export default class Cliente {
     senha!: string
 
     @OneToMany(() => Endereco, (endereco) => endereco.idEndereco)
-    @JoinColumn()
     endereco?: Endereco
 
     @OneToOne(() => Adm, (adm)=> adm.cliente)

@@ -23,6 +23,15 @@ router.put("/prato/:id", JwtMiddleware, controllers.PratoController.atualizar)
 //ADM
 router.post("/adm/criar", JwtMiddleware, controllers.AdmController.criar)
 
+//PEDIDOS
+
+//FINALIZA O PEDIDO 
+router.post("/pedido/finalizar")
+
+
+//RETORNA PARA P USUÁRIO INFORMAÇÕES DO CARRINHO
+router.post("/pedido/carrinho")
+
 
 
 

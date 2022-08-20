@@ -9,6 +9,9 @@ export default class Endereco{
     idEndereco!: string
 
     @Column()
+    idCliente!: string
+
+    @Column()
     rua!: string
 
     @Column()
@@ -19,7 +22,7 @@ export default class Endereco{
 
 
      @ManyToOne(()=> Cliente, (cliente) => cliente.id)
-     @JoinColumn()
+     @JoinColumn({name: "IdCliente"})
      cliente?: Cliente
 
 

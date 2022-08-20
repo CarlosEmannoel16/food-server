@@ -7,24 +7,24 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-// const dataSource = new DataSource({
-// //     type: "postgres",
-// //     host: "localhost",
-// //     port: 5432,
-// //     username: "postgres",
-// //     password: "surane2210",
-// //     database: "postgres",
-// //     entities: [Cliente, Prato, Endereco, Adm]
-// // })
-
 const dataSource = new DataSource({
     type: "postgres",
-    host: process.env.HOST_HEROKU,
-    port: parseInt(process.env.PORT_HEROKU as string),
-    username: process.env.USERNAME_HEROKU,
-    password: process.env.PASSWORD_HEROKU,
-    database: process.env.DATABASE_HEROKU,
+    host: "localhost",
+    port: 5432,
+    username: "postgres",
+    password: "surane2210",
+    database: "postgres",
     entities: [Cliente, Prato, Endereco, Adm]
 })
+
+// const dataSource = new DataSource({
+//     type: "postgres",
+//     host: process.env.HOST_HEROKU,
+//     port: parseInt(process.env.PORT_HEROKU as string),
+//     username: process.env.USERNAME_HEROKU,
+//     password: process.env.PASSWORD_HEROKU,
+//     database: process.env.DATABASE_HEROKU,
+//     entities: [Cliente, Prato, Endereco, Adm]
+// })
 
 export default dataSource

@@ -17,7 +17,7 @@ export const JwtMiddleware = (req: Request, res: Response, next: NextFunction) =
     if (!authHeader || !token || authHeader.split(' ')[0] !== "Bearer") return res.status(401).json({ message: "Não Autorizado" })
 
     jwt.verify(token, process.env.SECRET_KEY as string, (err, user) => {
-        if (err) return res.status(403).json({ message: "Não Autorizado 2" })
+        if (err) return res.status(403).json({ message: "Não Autorizado" })
         if (user) next()
     })
 
