@@ -19,6 +19,8 @@ router.post("/login", controllers.AuthController.loginController)
 router.post("/prato/criar", JwtMiddleware, controllers.PratoController.criar)
 router.get("/prato/listar", controllers.PratoController.listar)
 router.put("/prato/:id", JwtMiddleware, controllers.PratoController.atualizar)
+router.delete("/prato/deletar/:id", JwtMiddleware, controllers.PratoController.excluir)
+router.get("/prato/:id", controllers.PratoController.pegarPeloId)
 
 //ADM
 router.post("/adm/criar", JwtMiddleware, controllers.AdmController.criar)

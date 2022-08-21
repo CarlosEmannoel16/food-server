@@ -25,6 +25,7 @@ class ClienteRepository {
 
 
     async pegarPeloEmail(email: string) {
+        console.log("email", email)
         const cliente = await this.getRepository.findOne({
             where: {
                 email

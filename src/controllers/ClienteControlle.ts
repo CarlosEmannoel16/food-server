@@ -8,12 +8,15 @@ class ClienteController {
 
     async criar(req: Request, res: Response) {
         try {
-            const result = await ClienteService.criarCliente(req.body)
-            if (req.body.endereco && result.cliente!) {
+            const result = await ClienteService.criarCliente(req.body.data)
+            if (req.body.data.endereco && result.autorizacao === true && result.cliente) {
                 const data = {...req.body.endereco, idCliente: result.cliente.id}
                 await EnderecoService.criarEndereco(data)
+                res.status(200).json(result)
+            } else {
+                res.status(400).json(result)
             }
-            res.json(result)
+            
         } catch (error) {
             res.status(500).json(error)
         }

@@ -6,9 +6,8 @@ export interface ILogin{
 
 export interface IPrato{
     idPrato?: string
-    nome: string,
+    nome: string
     url_foto?: string
-    descricao?: string
     valor: number
     idCliente: string 
 }

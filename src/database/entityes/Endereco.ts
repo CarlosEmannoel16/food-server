@@ -22,7 +22,7 @@ export default class Endereco{
 
 
      @ManyToOne(()=> Cliente, (cliente) => cliente.id)
-     @JoinColumn({name: "IdCliente"})
+     @JoinColumn({name: "idCliente"})
      cliente?: Cliente
 
 

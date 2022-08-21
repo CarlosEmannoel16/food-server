@@ -6,13 +6,12 @@ import PratoRepository from "../../repository/PratoRepository"
 
 class PratoService {
     async criarPrato(data: IPrato) {
+        console.log("___________________________)_)_)__)_)_", data)
         const isAdm = data.idCliente && await this.verificarSeEAdm(data.idCliente)
-        console.log("datadatdatdatdat",isAdm)
 
         const prato: Prato = {
             nome: data.nome,
             valor: data.valor,
-            descricao: data.descricao || "",
             url_foto: data.url_foto || ""
         }
 
@@ -29,7 +28,6 @@ class PratoService {
             idPrato: id,
             nome: data.nome,
             valor: data.valor,
-            descricao: data.descricao || "",
             url_foto: data.url_foto || ""
         }
 
@@ -41,7 +39,6 @@ class PratoService {
 
     async verificarSeEAdm(id: string) {
         const isAdm = await AdmRepository.pegarAdm(id)
-        console.log("isAdm",isAdm)
         if (isAdm.length > 0) {
             return isAdm
         }
@@ -50,6 +47,10 @@ class PratoService {
 
     async listar() {
         return await PratoRepository.listar()
+    }
+
+    async pegarPeloId(id: string) {
+        return await PratoRepository.pegarPeloId(id)
     }
 
     async deletar(id: string) {
@@ -61,9 +62,6 @@ class PratoService {
         } else {
             return { message: "Não Autorizado 5" }
         }
-
-
-
     }
 }
 
