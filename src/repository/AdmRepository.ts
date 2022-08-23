@@ -1,10 +1,10 @@
 import { Repository } from "typeorm";
 import dataSource from "../database/dataSource";
 import Adm from "../database/entityes/Adm";
-import Cliente from "../database/entityes/Cliente";
+import Cliente from "../database/entityes/Usuario";
 
-
-class AdmRepository {
+import { IAdmRepository } from "./IAdmRepository";
+class AdmRepository implements IAdmRepository {
 
     private readonly getRepository: Repository<Adm>
     private readonly getRepositoryCliente: Repository<Cliente>
@@ -14,22 +14,20 @@ class AdmRepository {
         this.getRepositoryCliente = dataSource.getRepository(Cliente)
     }
 
-    async adicionarAdm(id: string) {
+    async create(id: string) {
         const result = this.getRepository.create({ idCliente: id })
         return await this.getRepository.save(result)
     }
 
-    async pegarAdm(id: string) {
-        console.log("id",id)
-        // const result = await this.getRepository.find({where: {idCliente: id}})
-        const result = await this.getRepository.find(
+    async find(userMadeRequest: string) {
+        return await this.getRepository.findOne(
             {
                 relations: {
                     cliente: true
                 },
-                where: { idCliente: id }
+                where: { idCliente: userMadeRequest }
             })
-        return result
+
     }
 }
 

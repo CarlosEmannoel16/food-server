@@ -1,4 +1,4 @@
-import Cliente from "../../database/entityes/Cliente";
+import Cliente from "../../database/entityes/Usuario";
 import ClienteRepository from "../../repository/ClienteRepository";
 import bcrypt from "bcrypt"
 import { criarTokenJWT } from "../utils/CriarTokenJWT";

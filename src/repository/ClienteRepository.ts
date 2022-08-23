@@ -1,9 +1,10 @@
 import { Repository } from "typeorm";
 import dataSource from "../database/dataSource";
-import Cliente from "../database/entityes/Cliente";
+import Cliente from "../database/entityes/Usuario";
+import { ICreateUserDTO } from "../useCases/Cliente/UserDTO";
+import { IUserRepository } from "./IUserRepository";
 
-
-class ClienteRepository {
+class ClienteRepository implements IUserRepository {
 
     private readonly getRepository: Repository<Cliente>
 
@@ -11,21 +12,20 @@ class ClienteRepository {
         this.getRepository = dataSource.getRepository(Cliente)
     }
 
-    async listar(): Promise<Cliente[]> {
+    async find() {
         const clienteRes = await this.getRepository.find()
         return clienteRes
     }
 
 
-    async criar(data: Cliente): Promise<Cliente> {
+    async create(data: ICreateUserDTO): Promise<Cliente> {
         const clienteCreate = this.getRepository.create(data);
         const cliente = await this.getRepository.save(clienteCreate);
         return cliente;
     }
 
 
-    async pegarPeloEmail(email: string) {
-        console.log("email", email)
+    async findByEmail(email: string) {
         const cliente = await this.getRepository.findOne({
             where: {
                 email
@@ -34,7 +34,7 @@ class ClienteRepository {
         return cliente
     }
 
-    async pegarPeloCpf(cpf: string) {
+    async findByCpf(cpf: string) {
         const cliente = await this.getRepository.findOne({
             where: {
                 cpf
@@ -43,8 +43,7 @@ class ClienteRepository {
         return cliente
     }
 
-    async pegarPeloId(id: string) {
-
+    async findById(id: string) {
         const cliente = await this.getRepository.findOne({ where: { id } })
         return cliente
 
